@@ -43,6 +43,7 @@ class linkedList {
       return this.length;
     } else if (current) {
       this.head = current.next;
+      this.length--;
       return this.length;
     } else {
       return undefined;
