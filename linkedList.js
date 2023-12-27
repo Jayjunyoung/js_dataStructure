@@ -19,7 +19,7 @@ class linkedList {
 
   search(index) {
     //이게 젤 어렵네
-    this.#search(index[1])?.value;
+    this.#search(index)[1]?.value;
   }
 
   #search(index) {
@@ -67,10 +67,10 @@ ll.add(3);
 ll.add(4);
 ll.add(5);
 ll.add(6);
-console.log(ll.search(6));
-ll.delete(4);
+console.log(ll);
+console.log(ll.search(5)); //마지막이라 current.next는 없으므로 undefined 뜸
 console.log(ll.search(4));
-ll.delete(4);
 console.log(ll.search(4));
 console.log(ll.delete(4));
+console.log(ll.search(4));
 console.log("hi");
