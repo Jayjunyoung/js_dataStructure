@@ -69,7 +69,7 @@ ll.add(5);
 ll.add(6);
 ll.search(6); // undefined
 //ll.delete(4);
-console.log(ll.search(4)); // 6;
+console.log(ll.search(5)); // 6;
 ll.delete(4);
 ll.search(4); // undefined
 ll.delete(4); // undefined
