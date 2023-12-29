@@ -1,6 +1,7 @@
 class linkedList {
   length = 0; //생성자 생략 버전//연결리스트첨엔 길이가 0일것
   head = null;
+  tail = null; //마지막 데이터
 
   add(value) {
     //삽입 함수
@@ -53,6 +54,7 @@ class linkedList {
 
 class Node {
   next = null;
+  prev = null;
   constructor(value) {
     this.value = value;
   }

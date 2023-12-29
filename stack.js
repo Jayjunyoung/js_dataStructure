@@ -15,7 +15,7 @@ class Stack {
 
   get length() {
     return this.arr.length;
-  }
+  } //클래스 개념: getter -> 값을 반환함
 }
 
 const stack = new Stack();
