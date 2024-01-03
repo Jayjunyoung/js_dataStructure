@@ -14,7 +14,7 @@ export class BinarySearchTree {
       if (node.right) {
         this.#insert(node.value, value);
       } else {
-        node.right = value;
+        node.right = new Node(value);
       }
     }
   }
@@ -28,9 +28,44 @@ export class BinarySearchTree {
     }
   }
 
-  #search(node, value) {}
+  //node의 left부터 재귀함수
+  #search(node, value) {
+    if (node.value > value) {
+      if (!node.left) {
+        return null;
+      }
 
-  search(value) {}
+      if (node.left.value == value) {
+        return node.left;
+      }
+
+      return this.#search(node.left, value);
+    } else {
+      if (!node.right) {
+        return null;
+      }
+
+      if (node.right.value == value) {
+        return node.right;
+      }
+
+      return this.#search(this.right, value);
+    }
+  }
+
+  search(value) {
+    if (!this.root) {
+      return null;
+    }
+
+    //this.root가 있으면서 root의 값과 찾고자 하는 value가 값다면
+    if (this.root.value == value) {
+      return this.root;
+    }
+
+    //root부터 재귀함수 발동
+    return this.#search(this.root, value);
+  }
 
   #remove(node, value) {
     if (!node) {
