@@ -90,6 +90,7 @@ export class BinarySearchTree {
         while (exchange.right) {
           exchange = exchange.right;
         }
+        //while문을 돌며 exchange값이 왼쪽에서 가장 오른쪽에 있는 값으로 바뀜
         const temp = node.value;
         node.value = exchange.value;
         exchange.value = temp;
