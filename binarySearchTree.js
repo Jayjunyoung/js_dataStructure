@@ -94,7 +94,7 @@ export class BinarySearchTree {
         const temp = node.value;
         node.value = exchange.value;
         exchange.value = temp;
-        node.left = this.#remove(node.left, temp);
+        node.left = this.#remove(node.left, temp); //
         return node;
       }
     } else {
