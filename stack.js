@@ -1,4 +1,4 @@
-class Stack {
+export class Stack {
   arr = [];
 
   push(value) {
