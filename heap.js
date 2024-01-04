@@ -42,6 +42,7 @@ class MaxHeap {
       return this.arr.pop();
     }
     const root = this.arr[0];
+    //45를 78자리에 넣는것
     this.arr[0] = this.arr.pop();
     this.#reheapDown(0);
     return root;
@@ -92,9 +93,11 @@ class MaxHeap {
       (this.arr[leftIndex] || 0) > (this.arr[rightIndex] || 0)
         ? leftIndex
         : rightIndex;
+    //index, 해당 index의 값, 더 큰 인덱스의 값 출력
     console.log(index, this.arr[index], this.arr[bigger]);
     if (this.arr[index] < this.arr[bigger]) {
       const temp = this.arr[index];
+      //큰 걸 집어 넣어줌
       this.arr[index] = this.arr[bigger];
       this.arr[bigger] = temp;
     }
@@ -102,6 +105,7 @@ class MaxHeap {
 }
 
 const heap = new MaxHeap();
+//insert될때 작은 순으로 들어가고 index별로 비교
 heap.insert(8);
 heap.insert(19);
 heap.insert(23);
@@ -109,5 +113,6 @@ heap.insert(32);
 heap.insert(45);
 heap.insert(56);
 heap.insert(78);
+heap.remove();
 heap.removeValue(32);
 heap;
