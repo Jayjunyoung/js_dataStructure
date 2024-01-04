@@ -1,11 +1,11 @@
 export class Queue {
   arr = [];
 
-  enque(value) {
+  enqueue(value) {
     return this.arr.push(value);
   }
 
-  deque() {
+  dequeue() {
     return this.arr.shift();
   } //앞에 요소부터 제거
 
