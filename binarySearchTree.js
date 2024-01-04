@@ -12,7 +12,7 @@ export class BinarySearchTree {
       }
     } else {
       if (node.right) {
-        this.#insert(node.value, value);
+        this.#insert(node.right, value);
       } else {
         node.right = new Node(value);
       }
@@ -73,6 +73,7 @@ export class BinarySearchTree {
       return null; // 지울 값이 존재 안 하면 false return
     }
     if (node.value === value) {
+      //값을 찾았다면 그 값의 자식노드를 기준으로 바라본다.
       // 자식 입장
       // 지울 값을 찾은 경우
       if (!node.left && !node.right) {
@@ -100,9 +101,11 @@ export class BinarySearchTree {
     } else {
       // 부모 입장
       if (node.value > value) {
+        //부모의 왼팔에 합쳐지는 것
         node.left = this.#remove(node.left, value);
         return node;
       } else {
+        //부모의 오른팔에 합쳐지는 것
         node.right = this.#remove(node.right, value);
         return node;
       }
