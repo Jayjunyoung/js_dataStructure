@@ -19,12 +19,12 @@ export class Queue {
 }
 
 const queue = new Queue();
-queue.enque(1);
-queue.enque(3);
-queue.enque(5);
-queue.enque(2);
-queue.enque(4);
+queue.enqueue(1);
+queue.enqueue(3);
+queue.enqueue(5);
+queue.enqueue(2);
+queue.enqueue(4);
 console.log(queue.length);
 console.log(queue.peek());
-console.log(queue.deque());
+console.log(queue.dequeue());
 console.log(queue);
