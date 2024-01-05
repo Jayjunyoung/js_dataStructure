@@ -1,8 +1,13 @@
 class Deque {
+  //스택과 큐의 짬뽕 버전임
   arr = [];
 
   push(value) {
     return this.arr.push(value);
+  }
+
+  unshift(value) {
+    return this.arr.unshift(value);
   }
 
   pop() {
@@ -11,10 +16,6 @@ class Deque {
 
   shift() {
     return this.arr.shift();
-  }
-
-  unshift(value) {
-    return this.arr.unshift(value);
   }
 
   peek() {

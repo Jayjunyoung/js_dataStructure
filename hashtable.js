@@ -49,6 +49,7 @@ class Hashtable {
 }
 function hashF(key, mod) {
   if (typeof key === "string") {
+    //reduce 개념
     return key.split("").reduce((a, c) => a + c.charCodeAt(), 0) % mod;
     // ['a', 'b', 'c'] -> [97, 98, 99] -> 294 -> 24
   }
