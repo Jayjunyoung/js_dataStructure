@@ -1,11 +1,11 @@
-class MaxHeap {
+class PriorityQueue {
   // 최대힙
   arr = [];
 
   #reheapUp(index) {
     if (index > 0) {
       const parentIndex = Math.floor((index - 1) / 2);
-      if (this.arr[index] > this.arr[parentIndex]) {
+      if (this.arr[index].priority > this.arr[parentIndex].priority) {
         // 값 바꾸기
         const temp = this.arr[index];
         this.arr[index] = this.arr[parentIndex];
@@ -15,9 +15,12 @@ class MaxHeap {
     }
   }
 
-  insert(value) {
+  insert(priority, value) {
     const index = this.arr.length;
-    this.arr[index] = value;
+    this.arr[index] = {
+      priority,
+      value,
+    };
     this.#reheapUp(index);
   }
 
@@ -25,9 +28,12 @@ class MaxHeap {
     const leftIndex = index * 2 + 1;
     if (leftIndex < this.arr.length) {
       const rightIndex = index * 2 + 2;
+      //왼쪽 노드는 있지만 오른쪽 노드가 없는것을 보호위해 ? 대입
       const bigger =
-        this.arr[leftIndex] > this.arr[rightIndex] ? leftIndex : rightIndex;
-      if (this.arr[index] < this.arr[bigger]) {
+        this.arr[leftIndex].priority > this.arr[rightIndex]?.priority
+          ? leftIndex
+          : rightIndex;
+      if (this.arr[index]?.priority < this.arr[bigger]?.priority) {
         const temp = this.arr[index];
         this.arr[index] = this.arr[bigger];
         this.arr[bigger] = temp;
@@ -62,7 +68,7 @@ class MaxHeap {
 
   search(value) {
     for (let i = 0; i < this.arr.length; i++) {
-      if (this.arr[i] === value) {
+      if (this.arr[i].value === value) {
         return i;
       }
     }
@@ -74,7 +80,7 @@ class MaxHeap {
     if (index === null) {
       return false;
     }
-    this.arr[index] = newValue;
+    this.arr[index].value = newValue;
     for (let i = Math.floor(this.arr.length / 2 - 1); i >= 0; i--) {
       // O(1/2n)
       //내부적으로 힙의 규칙을 맞춰주기 위한 함수 시작
@@ -115,14 +121,15 @@ class MaxHeap {
   }
 }
 
-const heap = new MaxHeap();
+const pq = new PriorityQueue();
 //insert될때 작은 순으로 들어가고 index별로 비교
-heap.insert(8);
-heap.insert(19);
-heap.insert(23);
-heap.insert(32);
-heap.insert(45);
-heap.insert(56);
-heap.insert(78);
-heap.removeValue(32);
-heap;
+pq.insert(6, "one");
+pq.insert(5, "two");
+pq.insert(4, "three");
+pq.insert(3, "four");
+pq.insert(2, "five");
+pq.insert(1, "six");
+pq.insert(10000, "king");
+console.log(pq.remove()); //king이나올것
+console.log(pq.remove());
+pq;
