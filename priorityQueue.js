@@ -53,6 +53,7 @@ class PriorityQueue {
     const root = this.arr[0];
     //45를 78자리에 넣는것
     this.arr[0] = this.arr.pop();
+    //다시 index 0부터 시작
     this.#reheapDown(0);
     return root;
   }
@@ -107,12 +108,13 @@ class PriorityQueue {
     const leftIndex = index * 2 + 1;
     const rightIndex = index * 2 + 2;
     const bigger =
-      (this.arr[leftIndex] || 0) > (this.arr[rightIndex] || 0)
+      (this.arr[leftIndex].parentIndex || 0) >
+      (this.arr[rightIndex]?.priority || 0)
         ? leftIndex
         : rightIndex;
     //index, 해당 index의 값, 더 큰 인덱스의 값 출력
     console.log(index, this.arr[index], this.arr[bigger]);
-    if (this.arr[index] < this.arr[bigger]) {
+    if (this.arr[index].priority < this.arr[bigger]?.priority) {
       const temp = this.arr[index];
       //큰 걸 집어 넣어줌
       this.arr[index] = this.arr[bigger];
