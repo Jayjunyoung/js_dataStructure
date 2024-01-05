@@ -1,5 +1,5 @@
-class MaxHeap {
-  // 최대힙
+class MinHeap {
+  // 최소힙
   arr = [];
 
   #reheapUp(index) {
@@ -14,13 +14,11 @@ class MaxHeap {
       }
     }
   }
-
   insert(value) {
     const index = this.arr.length;
     this.arr[index] = value;
     this.#reheapUp(index);
   }
-
   #reheapDown(index) {
     const leftIndex = index * 2 + 1;
     if (leftIndex < this.arr.length) {
@@ -35,7 +33,6 @@ class MaxHeap {
       }
     }
   }
-
   remove() {
     // 루트 삭제
     if (this.arr.length === 0) {
@@ -50,7 +47,6 @@ class MaxHeap {
     this.#reheapDown(0);
     return root;
   }
-
   sort() {
     // 힙 정렬
     const sortedArray = [];
@@ -59,7 +55,6 @@ class MaxHeap {
     }
     return sortedArray;
   }
-
   search(value) {
     for (let i = 0; i < this.arr.length; i++) {
       if (this.arr[i] === value) {
@@ -68,7 +63,6 @@ class MaxHeap {
     }
     return null;
   }
-
   update(value, newValue) {
     const index = this.search(value);
     if (index === null) {
@@ -77,11 +71,9 @@ class MaxHeap {
     this.arr[index] = newValue;
     for (let i = Math.floor(this.arr.length / 2 - 1); i >= 0; i--) {
       // O(1/2n)
-      //내부적으로 힙의 규칙을 맞춰주기 위한 함수 시작
       this.#heapify(i); // O(1)
     }
   }
-
   removeValue(value) {
     // 특정 값 삭제
     const index = this.search(value);
@@ -89,15 +81,12 @@ class MaxHeap {
       return false;
     }
     this.arr.splice(index, 1);
-    //leaf가 아닌 노드부터 루트까지의 반복문
     for (let i = Math.floor(this.arr.length / 2 - 1); i >= 0; i--) {
       // O(1/2n)
       this.#heapify(i); // O(1)
     }
   }
-
   #heapify(index) {
-    //자식 노드 index구하고 더 큰 자식노드를 leaf가 아닌 노드의 값과 체인지
     const leftIndex = index * 2 + 1;
     const rightIndex = index * 2 + 2;
     const bigger =
@@ -115,7 +104,7 @@ class MaxHeap {
   }
 }
 
-const heap = new MaxHeap();
+const heap = new MinHeap();
 //insert될때 작은 순으로 들어가고 index별로 비교
 heap.insert(8);
 heap.insert(19);
