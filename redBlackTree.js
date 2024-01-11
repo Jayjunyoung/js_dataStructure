@@ -157,59 +157,38 @@ export class RedBlackTree {
   }
 
   #reStructure(node) {
-    const arr = [node, node.parent, node.parent.parent];
     let middle;
-    if (node.value > node.parent.parent.value) {
-      if (node.value > node.parent.value) {
+    const grandgrandpa = node.parent.parent.parent;
+    const grandpa = node.parent.parent;
+    const parent = node.parent;
+    if (node.value > grandpa.value) {
+      if (node > node.parent.value) {
         middle = node.parent;
       } else {
         middle = node;
       }
-      //가운데가 자신 이라면
+
       if (middle === node) {
-        const grandgrandpa = node.parent.parent.parent; //null일수있음
-        const grandpa = node.parent.parent;
-        const parent = node.parent;
         node.left = grandpa;
         grandpa.parent = node;
         node.right = parent;
         parent.parent = node;
-        if (grandgrandpa.left === grandpa) {
-          grandgrandpa.left = middle;
-          middle.parent = grandgrandpa;
-        } else {
-          grandgrandpa.right = middle;
-          middle.parent = grandgrandpa;
-        }
+        parent.left = null;
+      } else {
+        //부모가 가운데일 때
+        grandpa.right = parent.left;
+        grandpa.right.parent = grandpa;
+        parent.left = grandpa;
+        parent.left.parent = parent;
+        parent.right = null;
       }
-      //가운데가 부모 라면
-      else {
+      if (grandgrandpa.left === grandpa) {
       }
     } else {
-      if (node.value < node.parent.value) {
-        middle = node.parent;
+      if (node.value > node.parent.value) {
+        middle = node.value;
       } else {
-        middle = node;
-      }
-      //가운데가 자신 이라면
-      if (middle === node) {
-        const grandgrandpa = node.parent.parent.parent; //null일수있음
-        const grandpa = node.parent.parent;
-        const parent = node.parent;
-        node.left = grandpa;
-        grandpa.parent = node;
-        node.right = parent;
-        parent.parent = node;
-        if (grandgrandpa.left === grandpa) {
-          grandgrandpa.left = middle;
-          node.parent = grandgrandpa;
-        } else {
-          grandgrandpa.right = middle;
-          node.parent = grandgrandpa;
-        }
-      }
-      //가운데가 부모 라면
-      else {
+        middle = node.parent.value;
       }
     }
   }

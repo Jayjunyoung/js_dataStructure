@@ -108,7 +108,7 @@ class PriorityQueue {
     const leftIndex = index * 2 + 1;
     const rightIndex = index * 2 + 2;
     const bigger =
-      (this.arr[leftIndex].parentIndex || 0) >
+      (this.arr[leftIndex].priority || 0) >
       (this.arr[rightIndex]?.priority || 0)
         ? leftIndex
         : rightIndex;

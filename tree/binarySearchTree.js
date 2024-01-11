@@ -5,6 +5,7 @@ export class BinarySearchTree {
   #insert(node, value) {
     if (node.value > value) {
       //node의 value보다 삽입하고자 하는 value가 작은경우
+      //8의 자식인 3이 있다면 3,8 호출 그리고 else문 통해 3.right니까 6,8호출
       if (node.left) {
         this.#insert(node.left, value);
       } else {
@@ -15,6 +16,7 @@ export class BinarySearchTree {
         this.#insert(node.right, value);
       } else {
         node.right = new Node(value);
+        //결국엔 맨마지막에 7이 들어갈 것
       }
     }
   }
@@ -91,9 +93,9 @@ export class BinarySearchTree {
         while (exchange.right) {
           exchange = exchange.right;
         }
-        //while문을 돌며 exchange값이 왼쪽에서 가장 오른쪽에 있는 값으로 바뀜
-        const temp = node.value;
-        node.value = exchange.value;
+        //while문을 돌며 8이 왼쪽에서 가장 오른쪽에 있는 7로 바뀜
+        const temp = node.value; //temp에 8이 들어감
+        node.value = exchange.value; //8->7
         exchange.value = temp;
         node.left = this.#remove(node.left, temp); //
         return node;
@@ -101,12 +103,13 @@ export class BinarySearchTree {
     } else {
       // 부모 입장
       if (node.value > value) {
-        //부모의 왼팔에 합쳐지는 것
+        //왼팔 없어지는것
         node.left = this.#remove(node.left, value);
         return node;
       } else {
         //부모의 오른팔에 합쳐지는 것
         node.right = this.#remove(node.right, value);
+        //6을 리턴할 것
         return node;
       }
     }

@@ -19,7 +19,7 @@ class LinkedList {
   }
 
   search(index) {
-    //이게 젤 어렵네
+    //current값이 있는지 확인한다.
     return this.#search(index)[1]?.value;
   }
 

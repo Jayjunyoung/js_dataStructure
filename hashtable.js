@@ -4,6 +4,7 @@ class Hashtable {
     // 공간복잡도(O(N))
     this.capa = capa;
   }
+
   insert(key, value) {
     // 시간복잡도(O(1))
     const hash = hashF(key, this.capa);
@@ -12,6 +13,7 @@ class Hashtable {
     }
     this.data[hash].push({ key, value });
   }
+
   search(key) {
     // 시간복잡도 O(N/hash)
     const hash = hashF(key, this.capa);
@@ -24,6 +26,7 @@ class Hashtable {
     }
     return null;
   }
+
   update(key, value) {
     // 시간복잡도 O(N/hash)
     const hash = hashF(key, this.capa);
@@ -35,6 +38,7 @@ class Hashtable {
       }
     }
   }
+
   delete(key) {
     // 시간복잡도 O(N/hash)
     const hash = hashF(key, this.capa);
@@ -59,6 +63,7 @@ function hashF(key, mod) {
 }
 
 const ht = new Hashtable(30);
+//capacity: 30으로 설정
 ht.insert("abc", "hello");
 ht.insert(31, "hello");
 ht.insert(61, "bye");

@@ -97,6 +97,7 @@ class MaxHeap {
   }
 
   #heapify(index) {
+    //여기 자체에서는 재귀를 부르지 않음
     //자식 노드 index구하고 더 큰 자식노드를 leaf가 아닌 노드의 값과 체인지
     const leftIndex = index * 2 + 1;
     const rightIndex = index * 2 + 2;
@@ -125,4 +126,5 @@ heap.insert(45);
 heap.insert(56);
 heap.insert(78);
 heap.removeValue(32);
+console.log(heap.sort());
 heap;
